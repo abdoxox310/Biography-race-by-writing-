@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الملابس</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .login-btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: black;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>مرحباً بك في موقع الملابس</h1>
+    <button class="login-btn" id="openModalBtn">تسجيل الدخول</button>
+</header>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn">&times;</span>
+        <h2>تسجيل الدخول</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="اسم المستخدم" required>
+            <input type="password" id="password" placeholder="كلمة المرور" required>
+            <button type="submit">دخول</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Get the modal and buttons
+    const modal = document.getElementById('loginModal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const loginForm = document.getElementById('loginForm');
+
+    // Open the modal when the "تسجيل الدخول" button is clicked
+    openModalBtn.onclick = () => {
+        modal.style.display = 'block';
+    };
+
+    // Close the modal when the close button is clicked
+    closeModalBtn.onclick = () => {
+        modal.style.display = 'none';
+    };
+
+    // Close the modal if the user clicks outside of it
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+
+    // Handle form submission
+    loginForm.onsubmit = (event) => {
+        event.preventDefault(); // Prevent form from refreshing the page
+
+        // Get the username and password
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // Check if the credentials are correct
+        if ((username === 'السيف' || username === 'عبدالرحمن') && password === 'عبده') {
+            // Redirect to the specified URL
+            window.location.href = 'https://disciplined-rhinoceros-374.convex.app/';
+        } else {
+            alert('اسم المستخدم أو كلمة المرور غير صحيحة!');
+        }
+    };
+</script>
+
+</body>
+</html>
